@@ -1,58 +1,67 @@
 import readlinesync = require('readline-sync');
 import { colors } from './src/util/Cores';
+import { Conta } from './src/model/Conta';
 
 export  function main() {
   let opcao: number;
 
+  // Objeto da Classe Conta (Teste)
+  const conta: Conta = new Conta(1, 123, 1, "Joyce", 10000);
+  conta.visualizar();
+  conta.sacar(10500);
+  conta.visualizar();
+  conta.depositar(5000);
+  conta.visualizar();
+  
   while(true){
 
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "****************************************************",
                 colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "                    JOY BANK                        ",
     colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "****************************************************",
     colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "                                                    ",
     colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          1 - Criar Conta                           ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          2 - Listar Todas as Contas                ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          3 - Buscar Conta por Numero               ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          4 - Atualizar Dados da Conta              ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          5 - Apagar Conta                          ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          6 - Sacar                                 ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          7 - Depositar                             ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          8 - Transferir Valores entre Contas       ",colors.reset);
-    console.log(colors.bg.black,colors.fg.magenta,
+    console.log(colors.fg.magentastrong,
       "          9 - Sair                                  ",colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "                                                    ",
                 colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log(colors.fg.cyanstrong,
                 "****************************************************",
                 colors.reset);
-    console.log(colors.bg.black, colors.fg.cyan,
+    console.log( colors.fg.cyanstrong,
                 "                                                    ",
     colors.reset);
 
-    console.log(colors.bg.black,colors.fg.yellow,
+    console.log(colors.fg.yellowstrong,
                 "Entre com a opcao desejada:                         ",
                 colors.reset);
     opcao = readlinesync.questionInt("");
 
     if(opcao === 9){
-      console.log (colors.bg.black,colors.fg.magenta,
+      console.log (colors.fg.magentastrong,
         "\nJoy Bank - O seu futuro começa aqui!");
       sobre();
       console.log(colors.reset,"");
@@ -61,31 +70,31 @@ export  function main() {
 
     switch(opcao){
       case 1: 
-          console.log(colors.fg.magenta,"\nCriar Conta\n\n",colors.reset);
+          console.log(colors.fg.magentastrong,"\nCriar Conta\n\n",colors.reset);
           break;
       case 2: 
-          console.log(colors.fg.magenta,"\nListar todas as Contas\n\n",colors.reset);
+          console.log(colors.fg.magentastrong,"\nListar todas as Contas\n\n",colors.reset);
           break;
       case 3:
-          console.log(colors.fg.magenta,"\nBuscar Conta por Numero\n\n",colors.reset);
+          console.log(colors.fg.magentastrong,"\nBuscar Conta por Numero\n\n",colors.reset);
           break;
       case 4:
-          console.log(colors.fg.magenta,"\nAtualizar Dados da Conta\n\n",colors.reset);
+          console.log(colors.fg.magentastrong,"\nAtualizar Dados da Conta\n\n",colors.reset);
             break;
       case 5:
-        console.log(colors.fg.magenta,"\nApagar Conta\n\n",colors.reset);
+        console.log(colors.fg.magentastrong,"\nApagar Conta\n\n",colors.reset);
         break;
       case 6:
-        console.log(colors.fg.magenta,"\nSacar\n\n",colors.reset);
+        console.log(colors.fg.magentastrong,"\nSacar\n\n",colors.reset);
         break;
       case 7:
-        console.log(colors.fg.magenta,"\nDepositar\n\n",colors.reset);
+        console.log(colors.fg.magentastrong,"\nDepositar\n\n",colors.reset);
         break;
       case 8:
-        console.log(colors.fg.magenta,"\nTransferência entre Contas\n\n",colors.reset);
+        console.log(colors.fg.magentastrong,"\nTransferência entre Contas\n\n",colors.reset);
         break;
       default:
-        console.log(colors.fg.magenta,"\nOpção Inválida!\n",colors.reset);
+        console.log(colors.fg.magentastrong,"\nOpção Inválida!\n",colors.reset);
         break;
     }
   }
