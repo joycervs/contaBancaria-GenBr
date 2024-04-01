@@ -3,10 +3,16 @@ import { colors } from './src/util/Cores';
 import { Conta } from './src/model/Conta';
 import { ContaCorrente } from './src/model/ContaCorrente';
 import { ContaPoupanca } from './src/model/ContaPoupanca';
+import { ContaController } from "./src/controller/ContaController";
 
 export function main() {
 
     let opcao: number;
+
+    let contas: ContaController = new ContaController();
+
+    let cc1: ContaCorrente = new ContaCorrente (2,456, 1, "Joyce Ramos", 400000, 1000);
+    contas.cadastrar(cc1);
     
    // Objeto da Classe Conta (Teste)
     // const conta: Conta = new Conta(1, 123, 1, "Joyce", 10000);
@@ -94,6 +100,7 @@ export function main() {
           break;
       case 2: 
           console.log(colors.fg.magentastrong,"\nListar todas as Contas\n\n",colors.reset);
+          contas.listarTodas();
           break;
       case 3:
           console.log(colors.fg.magentastrong,"\nBuscar Conta por Numero\n\n",colors.reset);
