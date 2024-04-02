@@ -4,11 +4,16 @@ import { ContaRepository } from "../repository/ContaRepository";
 export class ContaController implements ContaRepository{
   
   private listaContas: Array<Conta> = new Array<Conta>();
-  numero: number = 0;
+  public numero: number = 0;
 
   
   procurarPorNumero(numero: number): void {
-    throw new Error("Method not implemented.");
+      let buscaConta = this.buscarNoArray(numero);
+
+      if(buscaConta !== null)
+          buscaConta.visualizar();
+      else
+          console.log("\nConta não foi encontrada!");
   }
   listarTodas(): void {
     for (let conta of this.listaContas) {
@@ -17,13 +22,25 @@ export class ContaController implements ContaRepository{
   }
   cadastrar(conta: Conta): void {
       this.listaContas.push(conta);
-      console.log("A Conta foi adicionada!")
+      console.log("A Conta foi adicionada!");
   }
   atualizar(conta: Conta): void {
-    throw new Error("Method not implemented.");
+      let buscaConta = this.buscarNoArray(conta.numero);
+
+          if(buscaConta !== null){
+              this.listaContas[this.listaContas.indexOf(buscaConta)] = conta;
+              console.log(`A Conta número ${conta.numero} foi Atualizada com êxito!`);
+          }else
+              console.log("\nConta não foi Encontrada!");
   }
-  deletar(conta: Conta): void {
-    throw new Error("Method not implemented.");
+  deletar(numero: number): void {
+      let buscaConta = this.buscarNoArray(numero);
+
+          if(buscaConta !== null){
+              this.listaContas.splice(this.listaContas.indexOf(buscaConta), 1)
+              console.log(`A Conta número ${numero} foi Excluída com êxito!`)
+          }else
+              console.log("\nConta não foi Encontrada!")
   }
   sacar(numero: number, valor: number): void {
     throw new Error("Method not implemented.");
@@ -33,6 +50,20 @@ export class ContaController implements ContaRepository{
   }
   transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
     throw new Error("Method not implemented.");
+  }
+
+
+  public gerarNumero(): number{
+    return ++ this.numero
+  }
+
+  public buscarNoArray(numero: number): Conta | null{
+    for (let conta of this.listaContas){
+      if(conta.numero === numero)
+          return conta;
+    }
+
+      return null;
   }
 
 }
